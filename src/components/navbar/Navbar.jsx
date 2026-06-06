@@ -12,21 +12,22 @@ const links = [
 function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     return (
-        <nav className='w-full backdrop-blur-sm shadow-sm fixed z-50'>
+        <nav className='bg-white/80 backdrop-blur-md shadow-sm fixed w-full z-50'>
             <div className="app-container flex justify-between items-center h-16">
                 <span className='gradient-text text-2xl font-bold'>AI Revolution</span>
 
                 {/*Desktop menu*/}
-                <div className="hidden md:block space-x-8">
+                <div className="hidden md:flex items-center space-x-8">
                     {links.map((link) => (
-                        <a className='nav-item' href={link.href} key={link.href}>{link.name}</a>
+                        <a key={link.name} className='nav-item' href={link.href}>{link.name}</a>
                     ))}
                     <a href='#' className='nav-btn'>Get Started</a>
                 </div>
 
+                {/*Burger menu Btn*/}
                 <button
                     onClick={() => setIsMobileMenuOpen(prev => !prev)}
-                    className='md:hidden text-gray-400 hover:bg-gray-200 rounded-md p-2'>
+                    className='md:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                          stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round"
@@ -37,7 +38,7 @@ function Navbar() {
 
             {/*Mobile menu*/}
             {isMobileMenuOpen && (
-                <div className='md:hidden bg-white shadow-lg px-2 py-3 rounded-b-lg space-y-1'>
+                <div className='md:hidden bg-white shadow-lg rounded-b-lg px-2 pt-2 pb-3 space-y-1'>
                     {links.map((link) => (
                         <a className='mobile-nav-item' href={link.href} key={link.href}>{link.name}</a>
                     ))}
